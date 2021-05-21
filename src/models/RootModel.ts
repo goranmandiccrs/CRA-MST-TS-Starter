@@ -3,10 +3,12 @@ import { createContext, useContext } from "react";
 import { observable } from "mobx";
 import { RouterModel, startRouter } from "./RouterModel";
 import PageRoutes from "../utils/PageRoutes";
+import { LoginModel } from "./LoginModel";
 
 export const RootModel = types
   .model("Root", {
     router: RouterModel,
+    login: LoginModel,
   })
   .actions((self) => {
     return {
@@ -45,6 +47,9 @@ export function useMobx() {
 export const rootInstance = RootModel.create({
   router: {
     views: PageRoutes,
+  },
+  login: {
+    isLoggedIn: false,
   },
 });
 startRouter(rootInstance.router);

@@ -42,7 +42,7 @@ export const RouterModel = types
         self.isLoading = isLoading;
       },
       setView: flow(
-        function*(view, params, queryParams) {
+        function* (view, params?, queryParams?) {
           const thisSetView = {
             key: view.formatUrl(params, queryParams),
             view: view,
@@ -50,27 +50,6 @@ export const RouterModel = types
             queryParams,
           };
 
-          /*if (_runningSetView) {
-            // if setView is already running or queued on this route, ignore
-            if (
-              _runningSetView.key === thisSetView.key ||
-              (_queuedSetView && _queuedSetView.key === thisSetView.key)
-            ) {
-              return;
-            }
-
-            _queuedSetView = thisSetView;
-
-            // spin this thread until it is no longer queued
-            while (_queuedSetView) {
-              yield new Promise(_spinWait);
-            }
-
-            // check that this is still the setView to process
-            if (_runningSetView.key !== thisSetView.key) {
-              return;
-            }
-          }*/
           self.nextView = view.name;
           _runningSetView = thisSetView;
 
@@ -120,7 +99,7 @@ export const RouterModel = types
             queryParams ||
             (!self.currentView &&
               Object.fromEntries(
-                new URLSearchParams(window.location.search).entries(),
+                new URLSearchParams(window.location.search).entries()
               ));
           self.currentView = view;
           self.params = params || {};
@@ -176,7 +155,7 @@ export const RouterModel = types
 
           _runningSetView = null;
           self.nextView = null;
-        }.bind(self),
+        }.bind(self)
       ),
     };
   })
@@ -213,8 +192,8 @@ export const RouterModel = types
         self.props = props;
       },
       checkAuthentication() {
-        //TODO: implement async check for auth
-        return true;
+        const root: RootType = getRoot(self);
+        return root.login.isLoggedIn;
       },
     };
   });
@@ -258,7 +237,7 @@ export const startRouter = (routerStore) => {
       if (history.location.pathname !== url) {
         history.push(url);
       }
-    },
+    }
   );
 
   // route to current url
