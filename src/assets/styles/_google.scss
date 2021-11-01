@@ -1,0 +1,45 @@
+.pac-container {
+  @include border(1, solid, $colorBorder, 8);
+  box-shadow: none;
+  box-sizing: border-box;
+  font-family: $fontPrimary;
+
+  &.pac-logo {
+    max-width: 360px;
+    width: 100% !important;
+
+    &:after {
+      content: none;
+    }
+  }
+
+  .pac-item {
+    @include font-size(14, 18, 500);
+    align-items: center;
+    border-top: 0;
+    color: $colorText;
+    cursor: pointer;
+    display: flex;
+    height: 52px;
+    justify-content: flex-start;
+    padding: 1rem;
+
+    &:not(:first-of-type) {
+      border-top: 1px solid $colorBorder;
+    }
+
+    &:hover {
+      background-color: $colorInputFilledBackground;
+    }
+
+    .pac-icon-marker {
+      background-image: none;
+      display: none;
+    }
+
+    .pac-item-query {
+      @include font-size(14, 18, 400);
+      color: $colorTitle;
+    }
+  }
+}

@@ -1,0 +1,218 @@
+@import 'variables';
+@import 'mixins';
+
+.DayPicker {
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem $colorBoxShadow;
+  display: inline-block;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  margin-right: 0.25rem;
+
+  &-wrapper {
+    flex-direction: row;
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
+    position: relative;
+    user-select: none;
+  }
+
+  &-NavBar {
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+    width: auto;
+    height: 24px;
+
+    span {
+      cursor: pointer;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik04LjUgNUwxNS41IDEyTDguNSAxOSIgc3Ryb2tlPSIjZGZlMWU2IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+DQo8L3N2Zz4NCg==);
+      transition: background-image 0.25s ease;
+
+      &:hover {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik04LjUgNUwxNS41IDEyTDguNSAxOSIgc3Ryb2tlPSIjMTgzYjU2IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+DQo8L3N2Zz4NCg==);
+      }
+
+      &:first-of-type {
+        transform: scaleX(-1);
+      }
+    }
+  }
+
+  &-Caption {
+    @include font-size(18, 24, 600);
+    color: $colorTitle;
+    display: table-caption;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  //Months
+  &-Months {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &-Month {
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: table;
+    margin: 0 1.25rem;
+    user-select: none;
+  }
+
+  //Weekdays
+  &-Weekdays {
+    display: table-header-group;
+    margin-top: 1rem;
+  }
+
+  &-WeekdaysRow {
+    display: table-row;
+  }
+
+  &-Weekday {
+    display: table-cell;
+    color: $colorTitle;
+    font-size: 0.875em;
+    font-weight: 700;
+    padding: 0.5rem;
+    text-align: center;
+
+    abbr {
+      text-decoration: none;
+    }
+  }
+
+  &-Body {
+    display: table-row-group;
+  }
+
+  &-Week {
+    border-top: 1px solid $colorBorder;
+    display: table-row;
+    width: 2.5rem;
+    transition: background-color 0.25s linear;
+
+    &:last-of-type {
+      border-bottom: 1px solid $colorBorder;
+    }
+
+    &Number {
+      background-color: $colorNeutral300;
+      border-left: 1px solid $colorBorder;
+      color: $colorTitle;
+      display: table-cell;
+      font-weight: 600;
+      height: 2.5rem;
+      padding: 0;
+      vertical-align: middle;
+      text-align: center;
+      width: 2.5rem;
+      transition: background-color 0.25s linear, color 0.25s linear;
+    }
+  }
+
+  //Day
+  &-Day {
+    border-left: 1px solid $colorBorder;
+    color: $colorTitle;
+    cursor: pointer;
+    display: table-cell;
+    height: 2.5rem;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+    width: 2.5rem;
+    transition: background-color 0.25s linear;
+
+    &:hover {
+      background-color: $colorNeutral300;
+    }
+
+    &:last-of-type {
+      border-right: 1px solid $colorBorder;
+    }
+
+    &--today {
+      font-weight: 700;
+    }
+
+    &--selected {
+      background-color: $colorPrimary;
+      color: $colorTextLight;
+
+      &:hover {
+        background-color: $colorPrimary;
+      }
+    }
+
+    &--outside {
+      color: $colorNeutral600;
+    }
+
+    &--disabled {
+      color: $colorNeutral300;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.DayPickerInput {
+  input {
+    @include font-size(16, 20, 600);
+    @include border(1, solid, $colorBorder, 8);
+    box-shadow: 0 0 0 28px $colorBackground inset;
+    color: $colorTitle;
+    font-family: $fontPrimary;
+    height: 56px;
+    outline: none;
+    padding: 1rem;
+    width: 100%;
+
+    &:active,
+    &:focus {
+      border-color: $colorPrimary;
+      outline: none;
+
+      &:disabled {
+        border-color: $colorBorder;
+      }
+    }
+
+    &:disabled {
+      border-color: $colorBorder;
+      box-shadow: 0 0 0 28px $colorNeutral500 inset;
+      opacity: 0.75;
+    }
+
+    &::placeholder {
+      color: $colorTextPlaceholder;
+      font-family: $fontPrimary;
+      font-weight: 500;
+    }
+
+    &:not(:placeholder-shown):not(:focus):valid {
+      background-color: $colorInputFilledBackground;
+      box-shadow: 0 0 0 28px $colorInputFilledBackground inset;
+    }
+  }
+
+  &-Overlay {
+    position: relative;
+    z-index: 999;
+    background-color: $colorTextLight;
+
+    &Wrapper {
+      position: absolute;
+    }
+  }
+}

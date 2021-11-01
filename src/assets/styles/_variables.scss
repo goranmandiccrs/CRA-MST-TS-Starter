@@ -1,0 +1,131 @@
+// <Font>
+
+$fontPrimary: 'Poppins', sans-serif;
+
+// </Font>
+
+// <Color>
+
+$colorPrimary: #ff9e1f;
+$colorPrimaryDisabled: #f2c8b6;
+$colorPrimaryDisabledBorder: #ebac91;
+$colorPrimaryHover: #b25e3a;
+
+$colorIcon: #959ead;
+
+$colorTitle: #183b56;
+
+$colorText: #5a7184;
+$colorTextLight: #ffffff;
+$colorTextPlaceholder: #959ead;
+
+$colorProgressBarBackground: #e3e3e5;
+
+$colorDark: #000000;
+
+$colorGrayDark: #333333;
+
+$colorBoxShadow: #9a9a9a;
+
+$colorInputFilledBackground: #fafbfc;
+
+$colorBorder: #dfe1e6;
+$colorBorderDashboard: #e8e8eb;
+$colorBorderUpload: #e0e0e3;
+$colorVerticalSepearator: #d9d9db;
+
+$colorNeutral300: #e6e8f0;
+$colorNeutral500: #fafbff;
+$colorNeutral600: #8f95b2;
+$colorNeutral700: #696f8c;
+$colorNeutral800: #5d7689;
+$colorNeutral900: #183b56;
+
+$colorIcon: #8a9cab;
+
+$colorScrollbar: #c4c4c4;
+
+$colorBackground: #ffffff;
+$colorBackgroundMenu: #f9f9fc;
+$colorBackgroundTable: #fbfbfb;
+$colorBackgroundDashboard: #f7f5f5;
+
+$colorSuccess: #ffffff;
+$colorSuccessText: #ffffff;
+$colorSuccessBackgroundDark: #52bd94;
+$colorSuccessBackground: #429777;
+
+$colorSuccess400: #52bd94;
+
+$colorInfo: #ffffff;
+$colorInfoText: #ffffff;
+$colorInfoBackgroundDark: #47a4d9;
+$colorInfoBackground: #ffffff;
+
+$colorWarning: #ffffff;
+$colorWarningText: #ffffff;
+$colorWarningBackgroundDark: #f99804;
+$colorWarningBackground: #ffffff;
+
+$colorDanger: #b92500;
+$colorDangerText: #de350b;
+$colorDangerBackgroundDark: #ff5555;
+$colorDangerBackground: #ffebe6;
+
+// </Color>
+
+// <Menu>
+
+$widthLeftMenu: 300px;
+
+// </Menu>
+
+// <Table>
+
+$tablePadding: 1.5rem;
+
+// </Table>
+
+// <Status>
+
+$colorStatusReleasedToPlanners: #f5d510;
+
+// </Status>
+
+// <Grid>
+
+$boxInner: 960px;
+$boxWidthMax: 1352px;
+
+$gridXXS: 420; // px
+$gridXS: 576; // px
+$gridSM: 768; // px
+$gridMD: 992; // px
+$gridLG: 1250; // px
+$gridXL: 1440; // px
+$gridXXL: 1680; // px
+
+$gridColumns: 12;
+$gridGutter: 7; // rem
+
+$gridBreakpoints: (
+  XXS: $gridXXS + px,
+  XS: $gridXS + px,
+  SM: $gridSM + px,
+  MD: $gridMD + px,
+  LG: $gridLG + px,
+  XL: $gridXL + px,
+  XXL: $gridXXL + px,
+);
+
+$containerMaxWidths: (
+  XXS: $gridXXS + $gridGutter * 16 + px,
+  XS: $gridXS + $gridGutter * 16 + px,
+  SM: $gridSM + $gridGutter * 16 + px,
+  MD: $gridMD + $gridGutter * 16 + px,
+  LG: $gridLG + $gridGutter * 16 + px,
+  XL: $gridXL + $gridGutter * 16 + px,
+  XXL: $gridXXL + $gridGutter * 16 + px,
+);
+
+// </Grid>

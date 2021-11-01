@@ -1,0 +1,5 @@
+**/__e2etests__/*.e2e.ts
+**/__tests__/*.test.tsx
+jest.config.e2e.js
+jest.config.test.js
+sonarqube-scanner.js

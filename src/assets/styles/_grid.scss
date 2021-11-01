@@ -1,0 +1,40 @@
+@import 'mixins';
+
+.Box {
+  @include make-container();
+  @include make-container-max-widths();
+  width: 100%;
+
+  &Fluid {
+    @include make-container();
+  }
+}
+
+.Row {
+  @include flex-wrap;
+  @include make-row();
+}
+
+@include make-grid-columns();
+
+.GridDivider {
+  position: relative;
+
+  &:after {
+    background-color: $colorBorderDashboard;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+  }
+}
+
+.MarginLeftAuto {
+  margin-left: auto;
+}
+
+.MarginRightAuto {
+  margin-right: auto;
+}

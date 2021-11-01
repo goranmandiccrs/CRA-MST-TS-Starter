@@ -1,0 +1,36 @@
+@import 'variables';
+
+// Min
+$minMobile: $gridXXS + $gridGutter * 16;
+$minMobileWide: $gridXS + $gridGutter * 16;
+
+$minTablet: $gridSM + $gridGutter * 16;
+$minTabletWide: $gridMD + $gridGutter * 16;
+
+$minDesktop: $gridLG + $gridGutter * 16;
+$minDesktopWide: $gridXL + $gridGutter * 16;
+
+$minDesktopExtraWide: $gridXXL + $gridGutter * 16;
+
+// Max
+$maxMobile: ($minMobileWide - 0.02) + px;
+$maxMobileWide: ($minTablet - 0.02) + px;
+
+$maxTablet: ($minTabletWide - 0.02) + px;
+$maxTabletWide: ($minDesktop - 0.02) + px;
+
+$maxDesktop: ($minDesktopWide - 0.02) + px;
+$maxDesktopWide: ($minDesktopExtraWide - 0.02) + px;
+
+// To
+$toMobile: 'screen and (max-width: #{$maxMobile})';
+$toMobileWide: 'screen and (max-width: #{$maxMobileWide})';
+
+$toTablet: 'screen and (max-width: #{$maxTablet})';
+$toTabletWide: 'screen and (max-width: #{$maxTabletWide})';
+
+$toDesktop: 'screen and (max-width: #{$maxDesktop})';
+$toDesktopWide: 'screen and (max-width: #{$maxDesktopWide})';
+
+// From To
+$fromTabletToDesktop: 'screen and (min-width: #{$minTablet}) and (max-width: #{$maxTablet})';

@@ -1,0 +1,128 @@
+@import '../variables';
+
+// Column Width
+@mixin column-width($width) {
+  flex: 0 0 $width;
+  max-width: $width;
+}
+
+// Gutter Margin
+@mixin margin($margin) {
+  margin-right: $margin + rem;
+  margin-left: $margin + rem;
+}
+
+// Gutter Padding
+@mixin padding($padding) {
+  padding-right: $padding + rem;
+  padding-left: $padding + rem;
+}
+
+// Gutter Margin
+@mixin gutter-margin($gutter-margin: $gridGutter / 2) {
+  @if $gutter-margin==auto {
+    margin-right: auto;
+    margin-left: auto;
+  } @else {
+    margin-right: -($gutter-margin + rem);
+    margin-left: -($gutter-margin + rem);
+
+    @media #{$toDesktop} {
+      margin-right: -($gutter-margin / 2 + rem);
+      margin-left: -($gutter-margin / 2 + rem);
+    }
+  }
+}
+
+// Gutter Padding
+@mixin gutter-padding($gutter-padding: $gridGutter / 2) {
+  padding-right: $gutter-padding + rem;
+  padding-left: $gutter-padding + rem;
+
+  @media #{$toDesktop} {
+    padding-right: $gutter-padding / 2 + rem;
+    padding-left: $gutter-padding / 2 + rem;
+  }
+}
+
+@mixin gutter-vertical-padding($gutter-padding: $gridGutter) {
+  padding-top: $gutter-padding + rem;
+  padding-bottom: $gutter-padding + rem;
+
+  @media #{$toDesktop} {
+    padding-top: $gutter-padding / 1.5 + rem;
+    padding-bottom: $gutter-padding / 1.5 + rem;
+  }
+}
+
+// Make Container
+@mixin make-container {
+  margin-left: auto;
+  margin-right: auto;
+  @include gutter-padding;
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $gridBreakpoints) {
+  $map: map-get($breakpoints, $name);
+  $min: if($map != 0, $map, null);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin make-container-max-widths(
+  $max-widths: $containerMaxWidths,
+  $breakpoints: $gridBreakpoints
+) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+// Make Row
+@mixin make-row {
+  @include gutter-margin;
+}
+
+// Make Column
+@mixin make-col($size, $columns: $gridColumns) {
+  width: percentage($size / $columns);
+}
+
+@mixin make-col-span($size, $columns: $gridColumns) {
+  width: percentage($size / $columns);
+}
+
+@mixin make-grid-columns(
+  $columns: $gridColumns,
+  $gutter: $gridGutter,
+  $breakpoints: $gridBreakpoints
+) {
+  %grid-column {
+    position: relative;
+    min-height: 1px;
+    @include gutter-padding;
+  }
+  $breakpoint-counter: 0;
+  @each $breakpoint in map-keys($breakpoints) {
+    $breakpoint-counter: ($breakpoint-counter + 1);
+    @for $i from 1 through $columns {
+      .Col-#{$breakpoint}-#{$i} {
+        @extend %grid-column;
+      }
+    }
+    @include media-breakpoint-up($breakpoint) {
+      @for $i from 1 through $columns {
+        .Col-#{$breakpoint}-#{$i} {
+          @include make-col-span($i, $columns);
+        }
+      }
+    }
+  }
+}

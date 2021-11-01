@@ -1,0 +1,8 @@
+@mixin border($border-width, $border-style, $border-color, $border-radius: 0) {
+  border-color: $border-color;
+  @if $border-radius != 0 {
+    border-radius: ($border-radius / 16) + rem;
+  }
+  border-style: $border-style;
+  border-width: $border-width + px;
+}

@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'mixins';
+
+.ErrorInputForm {
+  input {
+    background-color: $colorDangerBackground;
+    border-color: $colorDanger;
+    box-shadow: 0 0 0 28px $colorDangerBackground inset;
+    color: $colorDangerText;
+  }
+}
+
+.ErrorInputBox {
+  @include flex-center-vertical;
+  margin-top: 0.25rem;
+  min-height: 20px;
+
+  .ErrorInputMessage {
+    @include font-size(12, 16, 400);
+    color: $colorDanger;
+    margin-top: 0.125rem;
+  }
+
+  .ErrorInputIcon {
+    fill: $colorDanger;
+    margin-right: 0.5rem;
+
+    svg {
+      height: 0.75rem;
+      width: 0.75rem;
+    }
+  }
+}
