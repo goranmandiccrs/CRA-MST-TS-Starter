@@ -70,7 +70,6 @@ export const RouterModel: IAnyModelType = types
         if (
           self.history.location.pathname !== (self as RouterType).currentUrl
         ) {
-          console.log('pushing 2');
           self.history.push((self as RouterType).currentUrl, {});
           self.history.replace({
             pathName: (self as RouterType).currentUrl,
@@ -320,7 +319,6 @@ export const startRouter = (routerStore: RouterType): void => {
               search: ' ',
             });
           } else {
-            console.log('pushing ');
             routerStore.history.push(routerStore.currentUrl, {});
           }
         } else {
